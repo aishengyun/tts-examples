@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+
+    <link rel="icon" type="image/svg+xml" href="./logo.png" />
+    <link rel="dns-prefetch" href="https://api.aishengyun.cn" />
+    <link rel="dns-prefetch" href="https://cdn.aishengyun.cn" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <title>爱声云 - 大模型语音</title>
+    <meta name="keywords" content="爱声云,TTS,API,响应式,实时,多模态AI,语音聊天" />
+    <meta name="description" content="爱声云 Emotion TTS API 帮助开发者能够构建自然、响应式的实时多模态AI体验。帮助开发者快速实现硬件上的实时语音聊天。" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:title" content="Emotion Voice API" />
+    <meta property="og:description" content="爱声云 Emotion TTS API 帮助开发者能够构建自然、响应式的实时多模态AI体验。帮助开发者快速实现硬件上的实时语音聊天。" />
+    <meta property="og:url" content="https://docs.aishengyun.cn" />
+    <meta property="og:site_name" content="爱声云" />
+    <meta property="og:locale" content="zh_CN"/>
+    <meta property="og:image" content="https://cdn.aishengyun.cn/assets/logo.png">
+</head>
+<body>
+    <div x-data="app" class="relative w-screen mx-auto lg:w-10/12 flex flex-col items-center justify-center">
+        <div class="relative max-w-5xl mx-auto pt-20 sm:pt-24 lg:pt-32">
+            <h1 class="text-slate-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center dark:text-white">大模型语音</h1>
+            <p class="mt-6 text-lg text-slate-600 text-center max-w-3xl mx-auto dark:text-slate-400">
+                爱声云提供强大的 API 接口，助力开发者构建<code class="font-mono font-medium text-sky-500 dark:text-sky-400">自然</code>、<code class="font-mono font-medium text-sky-500 dark:text-sky-400">响应式</code>的<code class="font-mono font-medium text-sky-500 dark:text-sky-400">实时多模态</code> AI 交互体验。</p>
+            <p class="mt-6 text-lg text-slate-600 text-center max-w-3xl mx-auto dark:text-slate-400">
+                它能将文本实时转化为自然流畅的语音，为您提供逼真自然、复制精准的声音生成方案。轻松将文本内容转换成<code class="font-mono font-medium text-sky-500 dark:text-sky-400">专业级音频</code>，不仅能完美<code class="font-mono font-medium text-sky-500 dark:text-sky-400">复制目标声音</code>复制目标声音的声学特征，还能保持丰富的情感和韵律。我们同时也支持从零开始创建专属 AI 语音，满足你的个性化需求，让你的应用程序拥有无比拟真的声音效果，非常适合实时和对话式体验。更多详情，请访问<a class="text-blue-600" target="_blank" href="https://docs.aishengyun.cn"> API 文档</a>获取。
+            </p>
+        </div>
+        <h3 class="text-slate-900 font-extrabold tracking-tight px-4 mt-8 text-2xl sm:text-3xl lg:text-4xl text-center dark:text-white">接口设置</h3>
+        <div id="config" class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 mt-8">
+            <form class="grid grid-cols-3 gap-4">
+                <div class="">
+                    <label for="api_key" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">API Key</label>
+                    <input type="password" x-model.lazy="api_key" id="api_key" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+                <div class="">
+                    <label for="llm" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">大模型</label>
+                    <select id="llm" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option>DeepSeek</option>
+                        <!--option>Open AI</option-->
+                      </select>
+                </div>
+                <div class="">
+                    <label for="llm_key" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">大模型 Key</label>
+                    <input type="password" id="llm_key" x-model.lazy="llm_key" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+              </form>
+        </div>
+        <div class="p-4 mb-4 text-sm text-yellow-800 rounded-lg mt-2 bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300" role="alert">
+            <span class="font-medium">提示：</span> 如果你没有 API Key，请访问<a target="_blank" class="text-blue-600" href="https://www.aishengyun.cn/">爱声云</a>网站。如果你没有 DeepSeek 的大模型 Key，请访问<a target="_blank" class="text-blue-600" href="https://www.deepseek.com/"> DeepSeek </a> 官方网站。
+        </div>
+        <h3 class="text-slate-900 font-extrabold tracking-tight px-4 mt-8 text-2xl sm:text-3xl lg:text-4xl text-center dark:text-white">系统音色</h3>
+        <div class="w-full px-4 sm:px-6 md:px-8 mt-8 sm:mt-6 lg:mt-8 lg:grid lg:gap-8 lg:grid-cols-12 lg:items-center">
+           <div class="relative row-start-1 col-start-1 col-span-5 xl:col-span-6 -mt-10 h-64 overflow-y-auto">
+                <ul class="bg-slate-50 p-4 sm:px-8 sm:pt-6 sm:pb-8 lg:p-4 xl:px-8 xl:pt-6 xl:pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-3 gap-4 text-sm leading-6">
+                    <template x-for="speaker in speakers">
+                        <li @click="set_placeholder(speaker)" class="group cursor-pointer rounded-md p-3 bg-white ring-1 ring-slate-200 shadow-sm hover:bg-blue-500 hover:ring-blue-500 hover:shadow-md dark:bg-slate-700 dark:ring-0 dark:highlight-white/10 dark:hover:bg-blue-500">
+                            <dl class="grid sm:block lg:grid xl:block grid-cols-2 grid-rows-4 items-center">
+                                <dt class="sr-only">Title</dt>
+                                <dd x-text="speaker.name + ' (' + speaker.language + ') '" class="group-hover:text-white font-semibold text-slate-900">
+                                    {speaker.name}
+                                </dd>
+                                <dt class="sr-only">ID</dt>
+                                <dd x-text='speaker.file_name.replace(".wav", "")' class="group-hover:text-blue-200">{speaker.file_name}</dd>
+                            </dl>
+                        </li>
+                    </template>
+                </ul>
+           </div>
+           <div class="relative row-start-1 col-start-6 xl:col-start-7 mt-8 sm:mt-8 lg:mt-0 col-span-7 xl:col-span-6">
+            <form class="mx-auto h-64">
+                <div>
+                    <textarea id="message" rows="4" x-model="transcript" class="w-100 h-48 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" x-bind:placeholder="placeholder"></textarea>
+                </div>
+                <div class="grid grid-cols-2 gap-4 pt-2">
+                    <button type="button" x-bind:disabled="disabled" @click="file_request" class="px-5 py-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg cursor-pointer hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">生成语音</button>
+                    <button type="button" @click="download" x-bind:disabled="!blob" class="px-5 py-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg cursor-pointer hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    :class="is_mobile ? 'hidden' : ''"
+                    >下载语音</button>
+                </div>
+              </form>
+           </div>
+        </div>
+        <h5 class="text-slate-900 font-extrabold text-2xl mb-4">文本示例</h5>
+        <ul class="flex gap-3">
+            <li @click="transcript=event.target.innerText" class="cursor-pointer p-2 rounded-md ring-1 ring-slate-200 shadow-sm hover:bg-blue-500 hover:ring-blue-500 hover:text-white">2025/01/01 上午有 1/3 的概率下暴雨，所以单位有 578 人选择 10:30am 出门上班</li>
+            <li @click="transcript=event.target.innerText" class="cursor-pointer p-2  rounded-md ring-1 ring-slate-200 shadow-sm hover:bg-blue-500 hover:ring-blue-500 hover:text-white">今天我们西安地区仍然是晴朗天气，气温维持在 20 到 28 °C 之间，市民们出行注意防晒，建议带好遮阳伞。</li>
+        </ul>
+        <h3 class="text-slate-900 font-extrabold tracking-tight px-4 text-2xl mt-8 sm:text-3xl lg:text-4xl text-center dark:text-white">大模型语音对话</h3>
+        <div class="w-full mx-auto px-4 sm:px-6 md:px-8 mt-8 mb-16 sm:mt-6 lg:mt-8 lg:grid lg:gap-8 lg:grid-cols-12 lg:items-center">
+            <div class="relative row-start-1 col-start-1 col-span-5 xl:col-span-6 h-64 overflow-auto bg-gray-50 border-gray-300 border rounded-xl h-64 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
+                <pre x-text="llm_output" class="h-64"></pre>
+            </div>
+            <div class="relative row-start-1 col-start-6 xl:col-start-7 mt-8 sm:mt-8 lg:mt-0 col-span-7 xl:col-span-6">
+                <form class="mx-auto h-64">
+                    <div>
+                        <textarea id="llm_message" rows="4" class="w-100 h-52 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" x-bind:placeholder="llm_text" x-model="llm_text"></textarea>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <button type="button" @click="dialog" class="px-5 py-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg cursor-pointer hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            语音对话
+                        </button>
+                    </div>
+                  </form>
+            </div>
+         </div>
+    </div>
+    <script src="./lib/index.js" type="module"></script>
+    <script src="./app.js?v=2"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/axios/1.7.8/axios.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/alpinejs/3.14.3/cdn.js"></script>
+</body>
+
+</html>

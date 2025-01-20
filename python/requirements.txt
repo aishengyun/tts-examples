@@ -1,0 +1,6 @@
+--extra-index-url https://mirrors.aliyun.com/pypi/simple
+websockets == 14.1
+openai == 1.54.0
+httpx == 0.27.2
+pyaudio == 0.2.14
+httpx_sse==0.4.0
