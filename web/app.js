@@ -1,5 +1,5 @@
 
-const HOST = "https://api.aishengyun.cn"
+const API_HOST = "https://api.aishengyun.cn"
 
 function mobileCheck() {
   let check = false;
