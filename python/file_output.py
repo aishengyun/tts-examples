@@ -75,15 +75,13 @@ def main(args):
     # bytes api
     with httpx.Client(timeout=time_out).stream("POST", speech_url, headers=headers, data=json.dumps(message)) as res:
         # should like audio/wav;codec=pcm;rate=24000, otherwise authorization error orinput message error
-        print(res.headers)
-        print(res.status_code)
         
         # 检查响应状态码
         if res.status_code != 200:
             error_text = res.read()
             print(f"Error: {error_text}")
             return
-
+        
         # 从响应头获取文件名
         file_name = res.headers["content-disposition"].split("filename=")[1]
         

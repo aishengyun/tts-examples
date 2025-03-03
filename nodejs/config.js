@@ -1,17 +1,17 @@
 
-// Mainland, overseas https://api.aisehngyun.com
-const host = "https://api.aisehngyun.cn"
+// Mainland, overseas https://api.aishengyun.com
+const host = "https://api.aishengyun.cn"
 
-// api access key, visit https://www.aisehngyun.cn
+// api access key, visit https://console.aishengyun.cn
 const access_key = ""
 
-//system voice id, see https://docs.aisehngyun.cn/#/voices
-const voice = "zh_female_jiayi"
+//system voice id, see https://docs.aishengyun.cn/voices
+const voice = "zh_female_tianmei"
 
-// speech api for byts and sse output, API doc: https://docs.aisehngyun.cn/#/speech-endpoint
+// speech api for byts and sse output, API doc: https://docs.aishengyun.cn/api/speech/post
 const speech_url = `${host}/v1/audio/speech`
 
-// Bidirection Streaming API, API doc: https://dosc.aisehngyun.cn/#/websocket
+// Bidirection Streaming API, API doc: https://docs.aishengyun.cn/api/speech/websocket
 const stream_url = `${host.replace(/^http(s)?/,"ws$1")}/v1/audio/speech`
 
 // your OpenAI Completions API url, access_key and model
@@ -22,7 +22,6 @@ const llm_key = ""
 
 module.exports = {
     access_key,
-    embedding_url,
     speech_url,
     stream_url,
     llm_url,
