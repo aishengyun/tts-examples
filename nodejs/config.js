@@ -6,7 +6,7 @@ const host = "https://api.aishengyun.cn"
 const access_key = ""
 
 //system voice id, see https://docs.aishengyun.cn/voices
-const voice = "zh_female_tianmei"
+const voice = "zh_female_wanwanxiaohe"
 
 // speech api for byts and sse output, API doc: https://docs.aishengyun.cn/api/speech/post
 const speech_url = `${host}/v1/audio/speech`

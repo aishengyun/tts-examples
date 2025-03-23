@@ -6,9 +6,8 @@ host = "https://api.aishengyun.cn"
 
 # api access key, visit https://console.aishengyun.cn
 access_key = ""
-
 # system voice id, see https://docs.aishengyun.cn/voices
-voice = "zh_female_jiayi"
+voice = "zh_female_wanwanxiaohe"
 
 # speech api for byts and sse output, API doc: https://docs.aishengyun.cn/api/speech/post
 speech_url = f"{host}/v1/audio/speech"

@@ -1,5 +1,4 @@
 const fs = require('fs');
-const path = require('path');
 const axios = require('axios');
 const { v4: uuidv4 } = require('uuid');
 const yargs = require('yargs');
@@ -9,8 +8,7 @@ const { access_key, speech_url, voice } = require('./config');
 
 
 const sample_rate = 24000;
-// copy it from embedding api's output if you wanna use embedding mode, the embedding is 192 dimension
-const embedding = null; 
+
 
 function sseMode(message) {
     const id = uuidv4();
@@ -79,20 +77,21 @@ async function bytesMode(message) {
 }
 
 async function main(args) {
-    const voiceConfig = embedding
-        ? { mode: 'embedding', embedding }
-        : { mode: 'id', id: voice };
 
     const message = {
         model_id: 'emotion-tts-v1',
-        voice: voiceConfig,
+        voice: { mode: 'id', id: voice },
         output_format: {
             container: 'wav',
             encoding: 'pcm_s16le',
             sample_rate: sample_rate,
         },
-        language: 'jp',
-        transcript: 'こんにちは、あなたはとても優しい人だと思います、周りに面白い物語がたくさんありますね、教えてくれませんか？',
+        control: {
+            // emotion: ""
+            emotion: "happy" // emotion control, see doument for more detail: https://docs.aishengyun.cn/api/speech/post
+        },
+        language: 'zh',
+        transcript: '哈哈哈!今天发奖金，我开心死了!',
     };
 
     if (args.sse) {
